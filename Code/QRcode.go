@@ -50,20 +50,15 @@ func (g *CodeController) GetCode(c *gin.Context) {
 		}
 		// 返回对应的页面
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"path": path,
+			"context": requestMap["data"],
+			"path":    path,
 		})
-		fmt.Println("执行发送数据了")
 
 	} else {
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"path": "",
+			"context": "",
+			"path":    "",
 		})
 	}
-
-	// //显示二维码
-	// // pngurl := "/Users/kangbing/Desktop/qrcode.png"
-	// html := "<img src='" + pngpath + "' />"
-	// c.Header("Content-Type", "text/html; charset=utf-8")
-	// c.String(200, html)
 	return
 }

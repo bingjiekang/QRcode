@@ -11,7 +11,7 @@ func main() {
 	r := gin.Default()
 	// 使用该结构体下的函数,生成二维码图片
 	app := Code.NewCodeController()
-	r.LoadHTMLFiles("template/index.html")
+	r.LoadHTMLGlob("template/*")
 	r.Static("/static", "./static")
 	r.GET("/", app.GetCode)
 	r.POST("/", app.GetCode)
